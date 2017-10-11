@@ -72,7 +72,16 @@ noflag() { local FLAG; eval FLAG='$FLAGS_'$1; [ $FLAG -ne $FLAGS_TRUE ]; }
 
 git_do() {
   # equivalent to git, used to indicate actions that make modifications
+  local gitconfig_showcommands=false;
+  if git config --get gitflow.showcommands >/dev/null 2>&1; then
+    gitconfig_showcommands=$(git config --get gitflow.showcommands)
+    echo global:gitconfig_showcommands=$gitconfig_showcommands
+  fi
+  # check if the user requested to show_commands as a flag; it overrides global
   if flag show_commands; then
+    gitconfig_showcommands=true
+  fi
+  if [ "$gitconfig_showcommands" = "true" ]; then
     echo "git $@" >&2
   fi
   git "$@"

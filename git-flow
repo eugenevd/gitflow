@@ -61,6 +61,12 @@ usage() {
 	echo "   version   Shows version information."
 	echo
 	echo "Try 'git flow <subcommand> help' for details."
+        echo
+        echo "You can set global defaults instead of having to define flags each time:"
+        echo "Run: git config <key> <value>"
+        echo
+        echo "Available key/value pairs:"
+        echo " showcommands : [true|false]"
 }
 
 main() {
