@@ -75,7 +75,7 @@ git_do() {
   local gitconfig_showcommands=false;
   if git config --get gitflow.showcommands >/dev/null 2>&1; then
     gitconfig_showcommands=$(git config --get gitflow.showcommands)
-    echo global:gitconfig_showcommands=$gitconfig_showcommands
+    #echo global:gitconfig_showcommands=$gitconfig_showcommands
   fi
   # check if the user requested to show_commands as a flag; it overrides global
   if flag show_commands; then
